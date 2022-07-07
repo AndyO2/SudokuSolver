@@ -39,6 +39,92 @@ namespace SudokuSolver
             CheckColumnIsValid(column, value);
 
             //3) If there is no other instances of the value in the same 3x3 grid
+            CheckSubGridIsValid(row, column, value);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check if the value is valid in the corresponding 3x3 subgrid it is in
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool CheckSubGridIsValid(int row, int column, int value)
+        {
+            if (row >= 0 && row < 3)
+            {
+                //Top left 3x3 quadrant
+                if (column >= 0 && column < 3)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
+                }
+                //Middle left 3x3 quadrant
+                else if (column >= 3 && column < 6)
+                {
+                    for(int i = 3; i < 6; i++)
+                    {
+                        for(int j = 0; j < 3; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
+                }
+                //Bottom left 3x3 quadrant
+                else if (column >= 6 && column < 9)
+                {
+                    for (int i = 6; i < 9; i++)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
+                }
+            }
+            else if (row >= 3 && row <= 5)
+            {
+                //Top Middle 3x3 quadrant
+                if (column >= 0 && column < 3)
+                {
+
+                }
+                //Middle Middle 3x3 quadrant
+                else if (column >= 3 && column < 6)
+                {
+
+                }
+                //Bottom Middle 3x3 quadrant
+                else if (column >= 6 && column < 9)
+                {
+
+                }
+            }
+            else if (row >= 6 && row <= 8)
+            {
+                //Top Right 3x3 quadrant
+                if (column >= 0 && column < 3)
+                {
+
+                }
+                //Middle Right 3x3 quadrant
+                else if (column >= 3 && column < 6)
+                {
+
+                }
+                //Bottom Right 3x3 quadrant
+                else if (column >= 6 && column < 9)
+                {
+
+                }
+            }
 
             return true;
         }

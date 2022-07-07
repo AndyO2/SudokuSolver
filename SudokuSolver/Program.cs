@@ -15,7 +15,12 @@ int[,] solve = new int[,]
 
 Solver s = new Solver(solve);
 
-Console.WriteLine(s.CheckColumnIsValid(2,1));
+//Console.WriteLine(s.CheckColumnIsValid(2,1));
+
+for(int i = 0; i < 9; i++)
+{
+    Console.WriteLine(i + " : " + s.CheckSubGridIsValid(2, 6, i));
+}
 
 
 
