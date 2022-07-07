@@ -32,16 +32,16 @@ namespace SudokuSolver
         /// <returns></returns>
         public bool IsPossible(int row, int column, int value)
         {
-            //1) If there is no other instances of the value in the same row
-            CheckRowIsValid(row, value);
+            ////1) If there is no other instances of the value in the same row
+            //CheckRowIsValid(row, value);
 
-            //2) If there is no other instances of the value in the same column
-            CheckColumnIsValid(column, value);
+            ////2) If there is no other instances of the value in the same column
+            //CheckColumnIsValid(column, value);
 
-            //3) If there is no other instances of the value in the same 3x3 grid
-            CheckSubGridIsValid(row, column, value);
+            ////3) If there is no other instances of the value in the same 3x3 grid
+            //CheckSubGridIsValid(row, column, value);
 
-            return true;
+            return CheckRowIsValid(row,value) && CheckColumnIsValid(column, value) && CheckSubGridIsValid(row, column, value);
         }
 
         /// <summary>
@@ -318,6 +318,9 @@ namespace SudokuSolver
             return true;
         }
 
+        /// <summary>
+        /// Recursive method that solves the sudoku problem
+        /// </summary>
         public void Solve()
         {
             for (int i = 0; i < 9; i++)
@@ -327,10 +330,38 @@ namespace SudokuSolver
                     //When we find a 0, that means we found an empty square
                     if (board[i,j] == 0)
                     {
-
+                        //Loop through all possible options
+                        for (int k = 1; k < 10; k++)
+                        {
+                            if (IsPossible(i, j, k))
+                            {
+                                //If this location is a possible value for the value k, insert it and solve the next empty cell
+                                board[i, j] = k;
+                                //Recursive call, after inserting a possible value, call this again to find and fill the next empty cell
+                                Solve();
+                                //If we run out of values, we backtrack and remove the previous value we inserted
+                                board[i, j] = 0;
+                            }
+                        }
+                        return;
                     }
                 }
             }
+            PrintBoard();
+        }
+
+        //Helper method that prints the solution
+        private void PrintBoard()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Console.Write(board[i, j] + " ");
+                    if (j == 8) Console.WriteLine();
+                }
+            }
+            Console.WriteLine();
         }
     }
 }

@@ -4,25 +4,34 @@
 //Second index represents what column (left and right)
 int[,] solve = new int[,]
 {
-    { 0, 8, 1, 2, 3, 4, 5, 0, 6 },
-    { 0, 9, 1, 2, 3, 4, 5, 0, 5 },
-    { 0, 0, 1, 2, 3, 4, 5, 0, 5 },
-    { 0, 7, 1, 2, 3, 4, 5, 0, 5 },
-    { 0, 6, 1, 2, 3, 4, 5, 0, 9 },
-    { 0, 0, 1, 2, 3, 4, 5, 2, 5 },
-    { 0, 0, 1, 2, 3, 4, 8, 7, 6 },
-    { 5, 4, 1, 2, 3, 4, 5, 4, 9 },
-    { 0, 0, 1, 2, 3, 4, 3, 2, 1 },
+    { 3, 0, 0, 8, 0, 1, 0, 0, 2 },
+    { 2, 0, 1, 0, 3, 0, 6, 0, 4 },
+    { 0, 0, 0, 2, 0, 4, 0, 0, 0 },
+    { 8, 0, 9, 0, 0, 0, 1, 0, 6 },
+    { 0, 6, 0, 0, 0, 0, 0, 0, 0 },
+    { 7, 0, 2, 0, 0, 0, 4, 0, 9 },
+    { 0, 0, 0, 5, 0, 9, 0, 0, 0 },
+    { 9, 0, 4, 0, 8, 0, 7, 0, 5 },
+    { 6, 0, 0, 1, 0, 7, 0, 0, 3 },
 };
 
-Solver s = new Solver(solve);
-
-//Console.WriteLine(s.CheckColumnIsValid(2,1));
-
-for(int i = 1; i <= 9; i++)
+Console.WriteLine("BOARD TO SOLVE");
+for(int i = 0; i < 9; i++)
 {
-    Console.WriteLine(i + " : " + s.CheckSubGridIsValid(8, 8, i));
+    for(int j = 0; j < 9; j++)
+    {
+        Console.Write(solve[i,j] + " ");
+        if (j == 8) Console.WriteLine();
+    }
 }
+
+Console.WriteLine("\nPress 'Enter' for Solution(s)");
+Console.Read();
+
+Console.WriteLine("SOLUTION(S)");
+Solver s = new Solver(solve);
+s.Solve();
+
 
 
 
