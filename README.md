@@ -10,6 +10,8 @@ Sudoku Solver written in C# using recursive backtracking
 Predicted Hours:          7        Actual Hours: 4 
 
 # What I Learned
-Practice with 2D arrays
-Practice with Recursion
-Sudoku Backtracking Algorithm
+1)Practice with 2D arrays
+
+2)Practice with Recursion
+
+3)Sudoku Backtracking Algorithm
