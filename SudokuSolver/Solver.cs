@@ -53,14 +53,15 @@ namespace SudokuSolver
         /// <returns></returns>
         public bool CheckSubGridIsValid(int row, int column, int value)
         {
+            //LEFT COLUMN
             if (column >= 0 && column <= 2)
             {
                 //Top left 3x3 quadrant
-                if (row >= 0 && row <= 2)
+                if (row >= 0 && row < 3)
                 {
                     for (int i = 0; i <= 2; i++)
                     {
-                        for (int j = 0; j <= 2; j++)
+                        for (int j = 0; j < 3; j++)
                         {
                             if (board[i, j] == value) return false;
                         }
@@ -89,14 +90,15 @@ namespace SudokuSolver
                     }
                 }
             }
+            //MIDDLE COLUMN
             else if (column >= 3 && column <= 5)
             {
                 //Top Middle 3x3 quadrant
                 if (row >= 0 && row < 3)
                 {
-                    for (int i = 3; i < 5; i++)
+                    for (int i = 0; i < 3; i++)
                     {
-                        for (int j = 3; j < 5; j++)
+                        for(int j = 3; j < 6; j++)
                         {
                             if (board[i, j] == value) return false;
                         }
@@ -105,30 +107,61 @@ namespace SudokuSolver
                 //Middle Middle 3x3 quadrant
                 else if (row >= 3 && row < 6)
                 {
-
+                    for (int i = 3; i < 6; i++)
+                    {
+                        for (int j = 3; j < 6; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
                 }
                 //Bottom Middle 3x3 quadrant
                 else if (row >= 6 && row < 9)
                 {
-
+                    for (int i = 6; i < 9; i++)
+                    {
+                        for (int j = 3; j < 6; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
                 }
             }
+            //RIGHT COLUMN
             else if (column >= 6 && column <= 8)
             {
                 //Top Right 3x3 quadrant
                 if (row >= 0 && row < 3)
                 {
-
+                    for (int i = 0; i < 3; i++)
+                    {
+                        for (int j = 6; j < 9; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
                 }
                 //Middle Right 3x3 quadrant
                 else if (row >= 3 && row < 6)
                 {
-
+                    for (int i = 3; i < 6; i++)
+                    {
+                        for (int j = 6; j < 9; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
                 }
                 //Bottom Right 3x3 quadrant
                 else if (row >= 6 && row < 9)
                 {
-
+                    for (int i = 6; i < 9; i++)
+                    {
+                        for (int j = 6; j < 9; j++)
+                        {
+                            if (board[i, j] == value) return false;
+                        }
+                    }
                 }
             }
 
