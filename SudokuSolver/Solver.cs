@@ -32,16 +32,7 @@ namespace SudokuSolver
         /// <returns></returns>
         public bool IsPossible(int row, int column, int value)
         {
-            ////1) If there is no other instances of the value in the same row
-            //CheckRowIsValid(row, value);
-
-            ////2) If there is no other instances of the value in the same column
-            //CheckColumnIsValid(column, value);
-
-            ////3) If there is no other instances of the value in the same 3x3 grid
-            //CheckSubGridIsValid(row, column, value);
-
-            return CheckRowIsValid(row,value) && CheckColumnIsValid(column, value) && CheckSubGridIsValid(row, column, value);
+            return CheckRowIsValid(row, value) && CheckColumnIsValid(column, value) && CheckSubGridIsValid(row, column, value);
         }
 
         /// <summary>
@@ -70,9 +61,9 @@ namespace SudokuSolver
                 //Middle left 3x3 quadrant
                 else if (row >= 3 && row < 6)
                 {
-                    for(int i = 3; i < 6; i++)
+                    for (int i = 3; i < 6; i++)
                     {
-                        for(int j = 0; j < 3; j++)
+                        for (int j = 0; j < 3; j++)
                         {
                             if (board[i, j] == value) return false;
                         }
@@ -98,7 +89,7 @@ namespace SudokuSolver
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        for(int j = 3; j < 6; j++)
+                        for (int j = 3; j < 6; j++)
                         {
                             if (board[i, j] == value) return false;
                         }
@@ -253,9 +244,9 @@ namespace SudokuSolver
         {
             if (row is 0)
             {
-                for(int i = 0; i < 9; i++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if (board[row,i] == value) return false;
+                    if (board[row, i] == value) return false;
                 }
             }
             else if (row is 1)
@@ -328,7 +319,7 @@ namespace SudokuSolver
                 for (int j = 0; j < 9; j++)
                 {
                     //When we find a 0, that means we found an empty square
-                    if (board[i,j] == 0)
+                    if (board[i, j] == 0)
                     {
                         //Loop through all possible options
                         for (int k = 1; k < 10; k++)
@@ -357,11 +348,10 @@ namespace SudokuSolver
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    Console.Write(board[i, j] + " ");
+                    Console.Write($"{board[i, j]} ");
                     if (j == 8) Console.WriteLine();
                 }
             }
-            Console.WriteLine();
         }
     }
 }
