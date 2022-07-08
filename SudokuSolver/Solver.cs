@@ -30,7 +30,7 @@ namespace SudokuSolver
         /// <param name="column">column we are checking</param>
         /// <param name="value">value we are inserting</param>
         /// <returns></returns>
-        public bool IsPossible(int row, int column, int value)
+        private bool IsPossible(int row, int column, int value)
         {
             return CheckRowIsValid(row, value) && CheckColumnIsValid(column, value) && CheckSubGridIsValid(row, column, value);
         }
@@ -42,7 +42,7 @@ namespace SudokuSolver
         /// <param name="row"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool CheckSubGridIsValid(int row, int column, int value)
+        private bool CheckSubGridIsValid(int row, int column, int value)
         {
             //LEFT COLUMN
             if (column >= 0 && column <= 2)
@@ -165,7 +165,7 @@ namespace SudokuSolver
         /// <param name="col"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool CheckColumnIsValid(int col, int value)
+        private bool CheckColumnIsValid(int col, int value)
         {
             if (col is 0)
             {
@@ -240,7 +240,7 @@ namespace SudokuSolver
         /// <param name="row"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool CheckRowIsValid(int row, int value)
+        private bool CheckRowIsValid(int row, int value)
         {
             if (row is 0)
             {
